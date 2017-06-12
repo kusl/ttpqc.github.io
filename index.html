@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Search it is!</title>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/tether/dist/js/tether.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="assets/scripts/scripts.js"></script>
+    <link rel="stylesheet" type="text/css" href="node_modules/tether/dist/css/tether.min.css">
+    <link rel="stylesheet" type="text/css" href="node_modules/tether/dist/css/tether-theme-arrows-dark.min.css">
+    <link rel="stylesheet" type="text/css" href="node_modules/tether/dist/css/tether-theme-arrows.min.css">
+    <link rel="stylesheet" type="text/css" href="node_modules/tether/dist/css/tether-theme-basic.min.css">
+    <link rel="stylesheet" type="text/css" href="node_modules/tether/dist/css/tether-theme-arrows-dark.min.css">
+    <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/styles.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+</head>
+
+<body class="main">
+    <form>
+        <div class="form-group">
+            <label for="queryString">Search</label>
+            <input type="text" class="form-control" id="queryString" aria-describedby="queryString-help" placeholder="What would you like to look for?" autofocus="autofocus" required>
+            <small id="queryString-help" class="form-text text-muted">Search should begin automatically...</small>
+        </div>
+    </form>
+    <div id="query">
+    </div>
+    <div id="results">
+
+    </div>
+</body>
+
+</html>
