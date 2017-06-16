@@ -22,7 +22,10 @@ function trackSearch(queryString) {
     $.getJSON(searchUrl, function(dataset) {
         var newHtmlString = "<ul>";
         dataset.aRows.forEach(function(entry) {
-            newHtmlString += "<li>" + getTrackNumber(entry) + "</li>";
+            var trackNumber = getTrackNumber(entry);
+            if (null != trackNumber) {
+                newHtmlString += "<li>" + getTrackUrl(trackNumber) + "</li>";
+            }
         })
         newHtmlString += "</ul>";
         $('#results').html(newHtmlString);
@@ -41,7 +44,7 @@ function getTrackNumber(queryString) {
     }
 }
 
-function trackUrl(queryString) {
+function getTrackUrl(queryString) {
     var searchUrl = "https://freemusicarchive.org/api/get/tracks.json?track_id=" + queryString + "&api_key=BESSHG06KZV7PRPT";
     $.getJSON(searchUrl, function(data) {
         console.log(data);
