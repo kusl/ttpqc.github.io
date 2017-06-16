@@ -9,7 +9,6 @@ $(document).ready(function() {
     $('#results').html(myHtmlString);
     var test = document.getElementById("queryString");
     test.addEventListener("keyup", function(event) {
-        console.log(test.value);
         if (test.value.length > 2) {
             $('#query').html(test.value);
             trackSearch(test.value);
@@ -23,8 +22,7 @@ function trackSearch(queryString) {
     $.getJSON(searchUrl, function(dataset) {
         var newHtmlString = "<ul>";
         dataset.aRows.forEach(function(entry) {
-            console.log(entry);
-            newHtmlString += "<li>" + entry + "</li>";
+            newHtmlString += "<li>" + getTrackNumber(entry) + "</li>";
         })
         newHtmlString += "</ul>";
         $('#results').html(newHtmlString);
@@ -32,10 +30,15 @@ function trackSearch(queryString) {
 }
 
 function getTrackNumber(queryString) {
+    var regExp = /.*\(\K[^)]+/;
     console.log(queryString);
-    var regExp = /\(([^)]+)\)/;
-    var matches = regExp.exec(queryString);
-    console.log(matches[matches.length - 1]);
+    var matches = queryString.match(/\(([^)]*)\)[^(]*$/)[1];
+    console.log(matches);
+    if (null !== matches) {
+        return matches;
+    } else {
+        return null;
+    }
 }
 
 function trackUrl(queryString) {
