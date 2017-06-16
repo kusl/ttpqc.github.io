@@ -22,7 +22,8 @@ let server = http.createServer(function(req, res) {
         res.setHeader('Cache-Control', 'no-cache, no-store');
         res.end(JSON.stringify(sysInfo[url.slice(6)]()));
     } else if (url == '/kus') {
-        res.send(env.OPENSHIFT_POSTGRESQL_DB_HOST);
+        res.writeHead(200);
+        res.end(process.env.OPENSHIFT_POSTGRESQL_DB_HOST);
     } else {
         fs.readFile('./static' + url, function(err, data) {
             if (err) {
