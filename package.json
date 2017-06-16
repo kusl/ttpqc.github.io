@@ -10,6 +10,8 @@
   "author": "Ionut-Cristian Florescu <ionut.florescu@gmail.com>",
   "license": "ISC",
   "dependencies": {
+    "bootstrap": "4.0.0-alpha.6",
+    "jquery": "^3.2.1",
     "pg": "^6.2.4"
   }
 }
