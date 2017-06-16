@@ -23,8 +23,9 @@ function trackSearch(queryString) {
         var newHtmlString = "<ul>";
         dataset.aRows.forEach(function(entry) {
             var trackNumber = getTrackNumber(entry);
+            var trackUrl = getTrackUrl(trackNumber);
             if (null != trackNumber) {
-                newHtmlString += "<li>" + getTrackUrl(trackNumber) + "</li>";
+                newHtmlString += "<li>" + "< a href = " + trackUrl + " >" + "track title</a> </li>";
             }
         })
         newHtmlString += "</ul>";
@@ -47,6 +48,14 @@ function getTrackNumber(queryString) {
 function getTrackUrl(queryString) {
     var searchUrl = "https://freemusicarchive.org/api/get/tracks.json?track_id=" + queryString + "&api_key=BESSHG06KZV7PRPT";
     $.getJSON(searchUrl, function(data) {
-        console.log(data);
+        console.log(data.dataset[0]);
+        return "https://files.freemusicarchive.org/" + data.dataset[0].track_file;
+    });
+}
+
+function getTrackTitle(queryString) {
+    var searchUrl = "https://freemusicarchive.org/api/get/tracks.json?track_id=" + queryString + "&api_key=BESSHG06KZV7PRPT";
+    $.getJSON(searchUrl, function(data) {
+        return "https://files.freemusicarchive.org/" + data.dataset[0].track_file;
     });
 }
