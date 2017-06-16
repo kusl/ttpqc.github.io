@@ -8,8 +8,8 @@ var config = {
     user: 'admin3aulibi', //env var: PGUSER 
     database: 'music', //env var: PGDATABASE 
     password: 'VzuteZvGuPKf', //env var: PGPASSWORD 
-    host: $OPENSHIFT_POSTGRESQL_DB_HOST, // Server hosting the postgres database 
-    port: $OPENSHIFT_POSTGRESQL_DB_PORT, //env var: PGPORT 
+    host: process.env.OPENSHIFT_POSTGRESQL_DB_HOST, // Server hosting the postgres database 
+    port: process.env.OPENSHIFT_POSTGRESQL_DB_PORT, //env var: PGPORT 
     max: 10, // max number of clients in the pool 
     idleTimeoutMillis: 30000, // how long a client is allowed to remain idle before being closed 
 };

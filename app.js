@@ -23,7 +23,7 @@ let server = http.createServer(function(req, res) {
         res.end(JSON.stringify(sysInfo[url.slice(6)]()));
     } else if (url == '/kus') {
         res.writeHead(200);
-        res.end(process.env.OPENSHIFT_POSTGRESQL_DB_HOST);
+        res.end('Send me an email at kushal developer at gmail dot com or message me on signal +1 661 434 5874');
     } else {
         fs.readFile('./static' + url, function(err, data) {
             if (err) {
