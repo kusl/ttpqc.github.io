@@ -27,20 +27,10 @@ function trackSearch(queryString) {
         var newHtmlString = "<ul>";
         dataset.aRows.forEach(function(entry) {
             let trackNumber = getTrackNumber(entry);
+            console.log(`The track number is ${trackNumber}`);
             if (null != trackNumber) {
                 var trackData = getTrackData(trackNumber);
-                if (trackData != undefined) {
-                    trackUrl = trackData.track_file;
-                    console.log(trackUrl);
-                }
-
-                // var a = document.createElement('a');
-                // var linkText = document.createTextNode(trackTitle);
-                // console.log("hello there " + trackUrl);
-                // a.appendChild(linkText);
-                // a.title = trackTitle;
-                // a.href = trackUrl;
-                // newHtmlString += "<li>" + a + "</li >";
+                console.log(`The track url is ${trackData[0].track_file}`);
             }
         })
         newHtmlString += "</ul>";
@@ -50,16 +40,20 @@ function trackSearch(queryString) {
 
 function getTrackNumber(queryString) {
     var regExp = /.*\(\K[^)]+/;
-    console.log(`The query string for get track number is ${queryString}`);
     var matches = queryString.match(/\(([^)]*)\)[^(]*$/)[1];
-    console.log(`The result fo the regular expression matches, the track number is ${matches}`);
+    console.log(
+        `
+        The query string was ${queryString}. 
+        The result fo the regular expression matches, the track number is ${matches}. 
+        `
+    );
     return matches;
 }
 
 function getTrackData(queryString) {
-    var searchUrl = "https://freemusicarchive.org/api/get/tracks.json?track_id=" + queryString + "&api_key=BESSHG06KZV7PRPT";
+    var searchUrl = `https://freemusicarchive.org/api/get/tracks.json?track_id=${queryString}&api_key=BESSHG06KZV7PRPT`;
+    console.log(`${searchUrl}`);
     $.getJSON(searchUrl, function(data) {
-        // console.log("get track url " + "https://files.freemusicarchive.org/" + data.dataset[0].track_file);
-        return "https://files.freemusicarchive.org/" + data.dataset[0];
+        return data.dataset;
     });
 }
