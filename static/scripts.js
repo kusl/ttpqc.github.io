@@ -26,16 +26,21 @@ function trackSearch(queryString) {
     $.getJSON(searchUrl, function(dataset) {
         var newHtmlString = "<ul>";
         dataset.aRows.forEach(function(entry) {
-            var trackNumber = getTrackNumber(entry);
+            let trackNumber = getTrackNumber(entry);
             if (null != trackNumber) {
-                var trackUrl = getTrackUrl(trackNumber);
-                var trackTitle = getTrackTitle(trackNumber);
-                var a = document.createElement('a');
-                var linkText = document.createTextNode(trackTitle);
-                a.appendChild(linkText);
-                a.title = trackTitle;
-                a.href = trackUrl;
-                newHtmlString += "<li>" + a + "</li >";
+                var trackData = getTrackData(trackNumber);
+                if (trackData != undefined) {
+                    trackUrl = trackData.track_file;
+                    console.log(trackUrl);
+                }
+
+                // var a = document.createElement('a');
+                // var linkText = document.createTextNode(trackTitle);
+                // console.log("hello there " + trackUrl);
+                // a.appendChild(linkText);
+                // a.title = trackTitle;
+                // a.href = trackUrl;
+                // newHtmlString += "<li>" + a + "</li >";
             }
         })
         newHtmlString += "</ul>";
@@ -45,9 +50,9 @@ function trackSearch(queryString) {
 
 function getTrackNumber(queryString) {
     var regExp = /.*\(\K[^)]+/;
-    console.log(queryString);
+    console.log(`The query string for get track number is ${queryString}`);
     var matches = queryString.match(/\(([^)]*)\)[^(]*$/)[1];
-    console.log(matches);
+    console.log(`The result fo the regular expression matches, the track number is ${matches}`);
     if (null !== matches) {
         return matches;
     } else {
@@ -55,18 +60,10 @@ function getTrackNumber(queryString) {
     }
 }
 
-function getTrackUrl(queryString) {
+function getTrackData(queryString) {
     var searchUrl = "https://freemusicarchive.org/api/get/tracks.json?track_id=" + queryString + "&api_key=BESSHG06KZV7PRPT";
     $.getJSON(searchUrl, function(data) {
-        console.log("get track url " + "https://files.freemusicarchive.org/" + data.dataset[0].track_file);
-        return "https://files.freemusicarchive.org/" + data.dataset[0].track_file;
-    });
-}
-
-function getTrackTitle(queryString) {
-    var searchUrl = "https://freemusicarchive.org/api/get/tracks.json?track_id=" + queryString + "&api_key=BESSHG06KZV7PRPT";
-    $.getJSON(searchUrl, function(data) {
-        console.log("get track title " + data.dataset[0].track_title);
-        return "https://files.freemusicarchive.org/" + data.dataset[0].track_title;
+        // console.log("get track url " + "https://files.freemusicarchive.org/" + data.dataset[0].track_file);
+        return "https://files.freemusicarchive.org/" + data.dataset[0];
     });
 }
