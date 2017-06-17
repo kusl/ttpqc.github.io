@@ -21,7 +21,7 @@ $(document).ready(function() {
 });
 
 function trackSearch(queryString) {
-    var searchUrl = "https://freemusicarchive.org/api/trackSearch?q=" + queryString + "&api_key=BESSHG06KZV7PRPT";
+    var searchUrl = `https://freemusicarchive.org/api/trackSearch?q=${queryString}&api_key=BESSHG06KZV7PRPT`;
     // var searchUrl = "https://freemusicarchive.org/api/trackSearch?q=deerhoof&limit=10";
     $.getJSON(searchUrl, function(dataset) {
         var newHtmlString = "<ul>";
@@ -53,11 +53,7 @@ function getTrackNumber(queryString) {
     console.log(`The query string for get track number is ${queryString}`);
     var matches = queryString.match(/\(([^)]*)\)[^(]*$/)[1];
     console.log(`The result fo the regular expression matches, the track number is ${matches}`);
-    if (null !== matches) {
-        return matches;
-    } else {
-        return null;
-    }
+    return matches;
 }
 
 function getTrackData(queryString) {
