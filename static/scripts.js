@@ -1,13 +1,16 @@
 document.addEventListener("DOMContentLoaded", function(event) {
     let inputTextbox = document.getElementById("queryString")
     inputTextbox.addEventListener('keydown', (function(e) {
+        doit(inputTextbox);
         if (e.which == 13) {
             console.log("Please don't press enter. Be kind to the ajax.");
             event.preventDefault();
             return false;
         }
     }));
+});
 
+function doit(inputTextbox) {
     inputTextbox.addEventListener('keypress', (function(e) {
         let searchUrl = `https://freemusicarchive.org/api/trackSearch?q=${inputTextbox.value}&api_key=BESSHG06KZV7PRPT`;
         console.log(searchUrl);
@@ -57,4 +60,4 @@ document.addEventListener("DOMContentLoaded", function(event) {
         };
         request.send();
     }));
-});
+}
