@@ -1,12 +1,5 @@
 document.addEventListener("DOMContentLoaded", function(event) {
     console.log('Lets get started!');
-    var results = ["apple", "ball", "cat", "dog", "egg"];
-    var myHtmlString = "<ul>";
-    results.forEach(function(entry) {
-        myHtmlString += "<li>" + entry + "</li>";
-    })
-    myHtmlString += "</ul>";
-    $('#results').html(myHtmlString);
     $("#queryString").keyup(function() {
         console.log($("#queryString")[0].value);
         trackSearch($("#queryString")[0].value);
