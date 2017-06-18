@@ -1,4 +1,4 @@
-$(document).ready(function() {
+document.addEventListener("DOMContentLoaded", function(event) {
     console.log('Lets get started!');
     var results = ["apple", "ball", "cat", "dog", "egg"];
     var myHtmlString = "<ul>";
