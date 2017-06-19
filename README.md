@@ -1,3 +1,5 @@
+The website is at https://music-mydroid.rhcloud.com/ 
+
 Contributing 
 ============
 You can push to both the open shift instance and the gitlab repository with one command with this simple trick. 
