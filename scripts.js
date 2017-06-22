@@ -21,6 +21,9 @@ function doit(inputTextbox) {
                 // Success!
                 let data = JSON.parse(this.response);
                 console.log(data);
+		if(data.type == "comment"){
+			$('#results').html(data.text);
+		}
             } else {
                 // We reached our target server, but it returned an error
             }
