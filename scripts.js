@@ -25,7 +25,7 @@ function doit(inputTextbox) {
 			$('#results').html(`Comment: ${data.text} <br> by ${data.by}`);
 			data.kids.foreach(function(kid){
 				console.log(`Kid id is ${kid.id}. Kid is by ${kid.by}. Kid is a ${kid.type}`);
-			}
+			});
 		} else if (data.type == "story") {
 			$('#results').html(`Story: <a href=\"${data.url}\">${data.title}</a><br> by ${data.by}`);
 		}
