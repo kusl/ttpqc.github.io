@@ -22,9 +22,9 @@ function doit(inputTextbox) {
                 let data = JSON.parse(this.response);
                 console.log(data);
 		if(data.type == "comment") {
-			$('#results').html(data.text);
+			$('#results').html(`Comment: ${data.text}`);
 		} else if (data.type == "story") {
-			$('#results').html(data.title);
+			$('#results').html(`Story: <a href=\"${data.url}\">${data.title}</a>`);
 		}
             } else {
                 // We reached our target server, but it returned an error
