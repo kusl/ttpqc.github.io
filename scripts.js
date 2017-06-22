@@ -28,7 +28,7 @@ function doit(inputTextbox) {
 		}
             } else {
                 // We reached our target server, but it returned an error
-		alert("Something is wrong");
+		console.log(`Something is wrong with query ${inputTextbox.value}`);
             }
         };
         request.onerror = function() {
