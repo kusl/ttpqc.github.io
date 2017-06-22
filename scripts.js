@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function(event) {
-    let inputTextbox = document.getElementById("queryString")
+    let inputTextbox = document.getElementById("queryString");
     inputTextbox.addEventListener('keydown', (function(e) {
         doit(inputTextbox);
         if (e.which == 13) {
