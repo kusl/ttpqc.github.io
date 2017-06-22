@@ -21,11 +21,14 @@ function doit(inputTextbox) {
                 // Success!
                 let data = JSON.parse(this.response);
                 console.log(data);
-		if(data.type == "comment"){
+		if(data.type == "comment") {
 			$('#results').html(data.text);
+		} else if (data.type == "story") {
+			$('#results').html(data.title);
 		}
             } else {
                 // We reached our target server, but it returned an error
+		alert("Something is wrong");
             }
         };
         request.onerror = function() {
