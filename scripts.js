@@ -32,6 +32,7 @@ function doit(inputTextbox) {
             } else {
                 // We reached our target server, but it returned an error
 		console.log(`Something is wrong with query ${inputTextbox.value}`);
+		$('#results').html(`The application encountered an error. If ${inputTextbox.value} is a valid item id, please send me a message on signal at +1 661 434 5874. No calls please.`);
             }
         };
         request.onerror = function() {
