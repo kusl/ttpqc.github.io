@@ -1,3 +1,7 @@
+body {
+	margin: 0 20px;
+}
+
 #queryString {
 	line-height: 2;
 }
