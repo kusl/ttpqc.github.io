@@ -22,9 +22,11 @@ function doit(inputTextbox) {
                 let data = JSON.parse(this.response);
                 console.log(data);
 		if(data.type == "comment") {
-			$('#results').html(`Comment: ${data.text}`);
+			$('#results').html(`Comment: ${data.text} <br> by ${data.by}`);
+			data.kids.foreach(function(kid){
+				console.log(`Kid id is ${kid.id}. Kid is by ${kid.by}. Kid is a ${kid.type}`
 		} else if (data.type == "story") {
-			$('#results').html(`Story: <a href=\"${data.url}\">${data.title}</a>`);
+			$('#results').html(`Story: <a href=\"${data.url}\">${data.title}</a><br> by ${data.by}`);
 		}
             } else {
                 // We reached our target server, but it returned an error
